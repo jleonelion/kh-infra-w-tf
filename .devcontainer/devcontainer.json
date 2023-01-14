@@ -1,0 +1,29 @@
+{
+    "name": "KnowledgeHut: Infrastructure with Terraform",
+    // specify relative path to the Dockerfile that should be used for container image to run in
+    "build": { "dockerfile": "Dockerfile" },
+
+    // Container user to use in VSCode Online and GitHub Codespaces
+    "remoteUser": "vscode",
+
+    // Use 'settings' to set *default* container specific settings.json values on container create.
+    // You can edit these settings after create using File > Preferences > Settings > Remote.
+    "settings": {
+        "files.eol": "\n",
+        "editor.tabSize": 2,
+        "terminal.integrated.scrollback": 32000
+    },
+    
+    // Uncomment the next line to run commands after the container is created.
+    //"postCreateCommand": "git config --global core.editor vi && pre-commit install && pre-commit autoupdate",
+
+    // Add the IDs of extensions you want installed when the container is created in the array below.
+    "extensions": [
+        "hashicorp.terraform",
+        "mutantdino.resourcemonitor",
+        "omartawfik.github-actions-vscode",
+        "eamodio.gitlens",
+        "davidanson.vscode-markdownlint",
+        "ms-azuretools.vscode-docker"
+    ]
+}
