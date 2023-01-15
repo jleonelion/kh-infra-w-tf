@@ -9,6 +9,22 @@ variable "name" {
   default     = null
 }
 
+variable "string_list" {
+  description = "(optional) List of strings"
+  type        = list(string)
+  default     = ["string1", "string2"]
+}
+
+variable "ip_address" {
+  type        = string
+  description = "Example of validating IP address"
+  default     = "10.1.0.0"
+  validation {
+    condition     = can(regex("^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", var.ip_address))
+    error_message = "Invalid IP address format"
+  }
+}
+
 variable "instance_type" {
   description = "(optional) Instance type of the server"
   type        = string

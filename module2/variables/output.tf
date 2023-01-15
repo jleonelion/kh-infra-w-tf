@@ -17,8 +17,18 @@ output "qty" {
   sensitive = false
 }
 
+output "string_list" {
+  value     = var.string_list
+  sensitive = false
+}
+
 output "vpc_config" {
   value     = var.vpc_config
+  sensitive = false
+}
+
+output "ip_address" {
+  value     = var.ip_address
   sensitive = false
 }
 
