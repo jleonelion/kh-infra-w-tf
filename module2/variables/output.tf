@@ -27,11 +27,6 @@ output "vpc_config" {
   sensitive = false
 }
 
-output "ip_address" {
-  value     = var.ip_address
-  sensitive = false
-}
-
 output "qty_plus_1" {
   value     = local.qty_plus_1
   sensitive = false

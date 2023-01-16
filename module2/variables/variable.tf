@@ -15,16 +15,6 @@ variable "string_list" {
   default     = ["string1", "string2"]
 }
 
-variable "ip_address" {
-  type        = string
-  description = "Example of validating IP address"
-  default     = "10.1.0.0"
-  validation {
-    condition     = can(regex("^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$", var.ip_address))
-    error_message = "Invalid IP address format"
-  }
-}
-
 variable "instance_type" {
   description = "(optional) Instance type of the server"
   type        = string
@@ -49,5 +39,10 @@ variable "vpc_config" {
   })
   default = {
     name = "myvpc"
+  }
+  validation {
+    # regex attributable to: https://regex101.com/r/4F4Jxl/1
+    condition     = can(regex("^(10(\\.(([0-9]?[0-9])|(1[0-9]?[0-9])|(2[0-4]?[0-9])|(25[0-5]))){3}/([8-9]|(1[0-9])|(2[0-9])|(3[0-1])))|(172\\.((1[6-9])|(2[0-9])(3[0-1]))(\\.(([0-9]?[0-9])|(1[0-9]?[0-9])|(2[0-4]?[0-9])|(25[0-5]))){2}/((1[2-9])|(2[0-9])|(3[0-1])))|(192\\.168(\\.(([0-9]?[0-9])|(1[0-9]?[0-9])|(2[0-4]?[0-9])|(25[0-5]))){2}/((1[6-9])|(2[0-9])|(3[0-1])))|(127(\\.(([0-9]?[0-9])|(1[0-9]?[0-9])|(2[0-4]?[0-9])|(25[0-5]))){3}/([8-9]|(1[0-9])|(2[0-9])|(3[0-1])))", var.vpc_config.cidr))
+    error_message = "VPC CIDR must be a valid IPv4 CIDR in private address range per RFC https://tools.ietf.org/html/rfc1918."
   }
 }
