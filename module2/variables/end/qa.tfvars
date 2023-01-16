@@ -1,5 +1,4 @@
 instance_type = "t2.large"
-qty           = 3
 # override vpc cidrs
 vpc_config = {
   name = "qa"
