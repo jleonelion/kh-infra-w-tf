@@ -1,12 +1,19 @@
-variable "profile_name" {
-  default = "default"
+variable "prefix" {
+  description = "Prefix to use for all resource names"
+  default     = "iaas"
 }
-variable "instance_key" {
-  default = "install"
+variable "server_instance_type" {
+  description = "Instance type for the servers"
+  default     = "t2.micro"
 }
-variable "vpc_cidr" {
-  default = "10.0.0.0/24"
+variable "region" {
+  default = "us-west-1"
 }
-variable "public_subnet_cidr" {
-  default = "10.0.10.0/25"
+
+variable "subnet1_zone" {
+  default = "a"
+}
+
+variable "subnet2_zone" {
+  default = "c"
 }

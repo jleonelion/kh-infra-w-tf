@@ -1,6 +1,6 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 resource "aws_security_group" "server" {
-  name        = "server"
+  name        = "${var.prefix}-server"
   description = "Allow ssh and http inbound traffic"
   vpc_id      = aws_vpc.main.id
 
@@ -31,12 +31,11 @@ resource "aws_security_group" "server" {
   }
 
   tags = {
-    Name = "allow_ssh_http"
+    Name = "${var.prefix}-allow_ssh_http"
   }
 }
-
 resource "aws_security_group" "alb" {
-  name        = "alb"
+  name        = "${var.prefix}-alb"
   description = "Allow inbound http traffic"
   vpc_id      = aws_vpc.main.id
 
@@ -59,6 +58,6 @@ resource "aws_security_group" "alb" {
   }
 
   tags = {
-    Name = "alb"
+    Name = "${var.prefix}-alb"
   }
 }

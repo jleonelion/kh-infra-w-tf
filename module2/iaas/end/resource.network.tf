@@ -1,4 +1,4 @@
-# vpc that will host bastion server
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
   # instance_tenancy = "default"
@@ -6,40 +6,39 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
 
   tags = {
-    Name = "main"
+    Name = "${var.prefix}-main"
   }
 }
-
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet
 resource "aws_subnet" "public_a" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "us-west-1a"
+  availability_zone       = "${var.region}${var.subnet1_zone}"
 
   tags = {
-    Name = "public_a"
+    Name = "${var.prefix}-public_a"
   }
 }
-
 resource "aws_subnet" "public_c" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "us-west-1c"
+  availability_zone       = "${var.region}${var.subnet2_zone}"
 
   tags = {
-    Name = "public_c"
+    Name = "${var.prefix}-public_c"
   }
 }
-
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "igw"
+    Name = "${var.prefix}-igw"
   }
 }
-
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
@@ -49,10 +48,10 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "public"
+    Name = "${var.prefix}-public"
   }
 }
-
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
 resource "aws_route_table_association" "public_a_rt_snet" {
   subnet_id      = aws_subnet.public_a.id
   route_table_id = aws_route_table.public.id

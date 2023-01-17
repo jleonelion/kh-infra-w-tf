@@ -4,10 +4,31 @@ This terraform code creates a simple IaaS solution in AWS.  We put two EC2 webse
 
 ## Setup
 
-Configure [AWS credentials file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+### AWS Credentials
+
+Configure [AWS credentials file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) with the following commands:
+
 ```bash
+# unset environment variables from prior excercise
+unset AWS_SECRET_ACCESS_KEY
+unset AWS_ACCESS_KEY_ID
+# configure aws
 aws configure
 # enter your secret id and secret key
 ```
 
-Generate a key pair that will be used to access the servers
+Now your AWS credentials are stored in ~/.aws/credentials
+
+### SSH Key Pair
+
+Generate a key pair that will be used to access the EC2.
+Run the the following commands from the same directory that has your Terraform configuration:
+
+```bash
+# make sure you have .ssh directory
+mkdir -p ~/.ssh
+# generate key pair in your ssh directory
+ssh-keygen -t rsa -f ~/.ssh/ec2_rsa
+# now copy the public key into a file location that Terraform expects the file to be
+cp ~/.ssh/ec2_rsa.pub ec2_rsa.pub
+```
