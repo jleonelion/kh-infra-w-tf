@@ -32,3 +32,9 @@ ssh-keygen -t rsa -f ~/.ssh/ec2_rsa
 # now copy the public key into a file location that Terraform expects the file to be
 cp ~/.ssh/ec2_rsa.pub ec2_rsa.pub
 ```
+
+## Refactoring Excercise
+
+After exploring the configuration, go through the process of extracting certain constants into variables.
+
+Copy the [variables.tf](./end/variables.tf) file into your working directory and update the appropriate code areas in the other .tf files.
