@@ -46,6 +46,6 @@ export TF_VAR_qty=5
 terraform apply -var-file ./dev.tfvars
 ```
 
-## Experiment yourself
+## Create your own TFVars
 
-You can take these examples and experiment further.
+Create a `qa.tfvars` file and override values for `instance_type` and `vpc_config`.  Refer to the [solution file](./end/qa.tfvars) if you get stuck.
