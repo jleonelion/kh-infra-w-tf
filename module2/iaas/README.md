@@ -4,6 +4,10 @@ This terraform code creates a simple IaaS solution in AWS.  We put two EC2 webse
 
 ## Setup
 
+```bash
+cd module2/iaas/start
+```
+
 ### AWS Credentials
 
 Configure [AWS credentials file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) with the following commands:
