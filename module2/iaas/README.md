@@ -42,3 +42,34 @@ cp ~/.ssh/ec2_rsa.pub ec2_rsa.pub
 After exploring the configuration, go through the process of extracting certain constants into variables.
 
 Copy the [variables.tf](./end/variables.tf) file into your working directory and update the appropriate code areas in the other .tf files.
+
+## A Closer Look at Statefiles
+
+With the solution still deployed to AWS, let's take a look at the important statefile to really understand what it does and how to manage it.
+
+1. Open the state file, but don't edit it!
+1. Run common terraform commands to [inspect infrastructure](https://developer.hashicorp.com/terraform/cli/inspect)
+
+  ```bash
+  terraform show
+  terraform state list
+  terraform state show
+  ```
+
+1. Run command to force replacement of infrastructure
+
+  ```bash
+  terraform apply -replace 
+  ```
+
+1. Run command to [remove a resource from state file](https://developer.hashicorp.com/terraform/cli/commands/state/rm)
+
+  ```bash
+  terraform state rm aws_security_group.server
+  ```
+
+1. Run command to [import security group into statefile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#import)
+
+  ```bash
+  terraform import aws_security_group.server <sg-xxxxxx>
+  ```
