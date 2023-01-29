@@ -24,4 +24,13 @@ locals {
       attribute1 = "complex_value1"
     }
   }
+
+  book_map = {
+    "Imaro" = {
+      "author"           = "Charles R. Saunders"
+      "language"         = "English"
+      "pages"            = 224
+      "publication-year" = 1981
+    }
+  }
 }
