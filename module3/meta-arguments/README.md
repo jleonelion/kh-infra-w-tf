@@ -1,6 +1,7 @@
 # Meta-Arguments
 
 Read more about meta-arguments:
+
 - [depends_on](https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on)
 - [count](https://developer.hashicorp.com/terraform/language/meta-arguments/count)
 - [for_each](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
