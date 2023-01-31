@@ -1,6 +1,6 @@
 module "server_name" {
   source = "./module/naming"
-  count = var.num_web_servers
+  count  = var.num_web_servers
 
   app_abbrev  = var.prefix
   name        = "server${count.index}"
@@ -16,8 +16,8 @@ resource "aws_instance" "server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.server_instance_type
   key_name      = aws_key_pair.ssh_key.id
-  # put this server in subnet in zone a
-  subnet_id              = module.vpc.public_subnets[0]
+  # alternate servers between subnet 0 and 1
+  subnet_id              = module.vpc.public_subnets[count.index % 2]
   vpc_security_group_ids = [module.server-sg.security_group_id]
 
   user_data = <<-EOF
