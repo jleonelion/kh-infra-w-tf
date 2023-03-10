@@ -2,9 +2,9 @@
 resource "aws_s3_bucket" "tf_remote_state" {
 
   # if this was realy, we would add this meta-data attribute to prevent accidental delete
-  # lifecycle {
-  #   prevent_destroy = true
-  # }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 # good practice to version the statefile...just in case rollback is required
 resource "aws_s3_bucket_versioning" "statefile_versioning" {
