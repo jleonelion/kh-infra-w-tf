@@ -7,10 +7,10 @@ This lesson introduces Terraform Cloud and Terraform Cloud Workspaces.
 Go to [Terraform Cloud](https://app.terraform.io/) and create a Free account.
 Setup an Organization, if default one is not created for you.
 
-## Create Account
+## AWS Credentials
 
-Go to [Terraform Cloud](https://app.terraform.io/) and create a Free account.
-Setup an Organization, if default one is not created for you.
+1. Log into [AWS Console](https://console.aws.amazon.com/)
+1. Generate Access Keys (just like we did in the module 1)
 
 ## Create New TF Cloud Workspace
 
