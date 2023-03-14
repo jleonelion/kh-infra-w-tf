@@ -20,7 +20,7 @@ resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_cidr
   map_public_ip_on_launch = true
-  # availability_zone = "us-west-2a"
+  availability_zone       = "${var.region}${var.subnet_zone}"
 
   tags = {
     Name = "public"
@@ -61,8 +61,8 @@ resource "aws_security_group" "sg" {
   }
   ingress {
     description = "HTTP from VPC"
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     # ipv6_cidr_blocks = ["::/0"]

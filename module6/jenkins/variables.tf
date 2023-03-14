@@ -1,6 +1,3 @@
-variable "region" {
-  default = "us-west-2"
-}
 variable "instance_type" {
   default = "t2.micro"
 }
@@ -16,3 +13,16 @@ variable "vpc_cidr" {
 variable "public_subnet_cidr" {
   default = "10.0.10.0/25"
 }
+
+variable "region" {
+  description = "AWS region to deploy resources to"
+  type        = string
+  default     = "us-west-2"
+}
+
+variable "subnet_zone" {
+  description = "Zone within the AWS region that first public subnet should be placed in"
+  type        = string
+  default     = "a"
+}
+
