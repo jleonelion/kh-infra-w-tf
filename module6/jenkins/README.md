@@ -54,4 +54,3 @@ terraform apply --auto-approve
 1. Name: terraform; Type: Multibranch Pipeline
 1. Branch Source > paste URL of your repo fork (if this is not public, you need to setup credentials)
 1. Build Configuration > Script Path
-

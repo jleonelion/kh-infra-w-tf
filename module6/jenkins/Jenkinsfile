@@ -4,11 +4,13 @@ pipeline {
     stage('Terraform Plan') {
       steps {
         script {
-          // Initialize Terraform
-          sh 'terraform init'
+          dir('module6/jenkins') {
+            // Initialize Terraform
+            sh 'terraform init'
 
-          // Run Terraform Plan
-          sh 'terraform plan'
+            // Run Terraform Plan
+            sh 'terraform plan'
+          }
         }
       }
     }
