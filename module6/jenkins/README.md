@@ -56,10 +56,9 @@ terraform apply --auto-approve
 
 1. From main screen, "Create a job"
 1. Name: terraform; Type: Multibranch Pipeline
-1. Branch Source > setup credential with GitHub PAT 
+1. Branch Source > setup credential with GitHub PAT
 1. Branch Source > paste URL of your repo fork and validate
 1. Build Configuration > Script Path
-
 
 ## GitHub Webhook
 
@@ -67,4 +66,3 @@ terraform apply --auto-approve
 1. Settings > Web Hook
 1. Payload URL will look something like: `http://<jenkins-server-ip>:8080//github-webhook/`
 1. Leave other settings as default and create webhook
-
