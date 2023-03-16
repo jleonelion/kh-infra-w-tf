@@ -40,8 +40,18 @@ terraform apply --auto-approve
   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
   ```
 
-## Jenkins Application Setup
+## Jenkins Initial Setup
 
 1. The Terraform project will produce an output called `jenkins_url`...open that URL in your browser.
 1. Paste the intial password you obtained in your SSH session
-1. Complete Jenkins setup
+1. Install Recommended Plugins
+1. Create silly admin account (username: adminme; password: password; name: Admin Me; email: admin@me.com)
+1. Start Using Jenkins
+
+## Jenkins Job
+
+1. From main screen, "Create a job"
+1. Name: terraform; Type: Multibranch Pipeline
+1. Branch Source > paste URL of your repo fork (if this is not public, you need to setup credentials)
+1. Build Configuration > Script Path
+

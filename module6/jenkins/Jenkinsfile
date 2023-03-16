@@ -1,0 +1,16 @@
+pipeline {
+	agent any
+	stages {
+    stage('Terraform Plan') {
+      steps {
+        script {
+          // Initialize Terraform
+          sh 'terraform init'
+
+          // Run Terraform Plan
+          sh 'terraform plan'
+        }
+      }
+    }
+	}
+}
