@@ -31,7 +31,7 @@ terraform init
 terraform apply --auto-approve
 ```
 
-## Log into Jenkins Server
+## SSH to Jenkins Server
 
 1. The Terraform project will produce an output called `jenkins_ssh`...run that command to SSH into the Jenkins server.
 1. Extract the initial admin password by executing the following command from your SSH session
@@ -48,9 +48,23 @@ terraform apply --auto-approve
 1. Create silly admin account (username: adminme; password: password; name: Admin Me; email: admin@me.com)
 1. Start Using Jenkins
 
+## GitHub PAT
+
+[Create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that Jenkins will use when communciating with GitHub
+
 ## Jenkins Job
 
 1. From main screen, "Create a job"
 1. Name: terraform; Type: Multibranch Pipeline
-1. Branch Source > paste URL of your repo fork (if this is not public, you need to setup credentials)
+1. Branch Source > setup credential with GitHub PAT 
+1. Branch Source > paste URL of your repo fork and validate
 1. Build Configuration > Script Path
+
+
+## GitHub Webhook
+
+1. Navigate to the repository on GitHub
+1. Settings > Web Hook
+1. Payload URL will look something like: `http://<jenkins-server-ip>:8080//github-webhook/`
+1. Leave other settings as default and create webhook
+

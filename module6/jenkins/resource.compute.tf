@@ -1,9 +1,9 @@
 resource "aws_instance" "jenkins" {
-  ami             = data.aws_ami.ubuntu.id
-  instance_type   = var.instance_type
-  key_name        = aws_key_pair.ssh_key.id
-  subnet_id       = aws_subnet.public.id
-  security_groups = [aws_security_group.sg.id]
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = var.instance_type
+  key_name               = aws_key_pair.ssh_key.id
+  subnet_id              = aws_subnet.public.id
+  vpc_security_group_ids = [aws_security_group.sg.id]
 
   user_data = <<-EOF
   #!/bin/bash
