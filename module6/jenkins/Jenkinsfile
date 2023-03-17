@@ -4,7 +4,7 @@ pipeline {
     stage('Terraform Plan') {
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'amazon', usernameVariable: 'AWS_SECRET_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+          withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'AWS_SECRET_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             dir('module6/sample') {
               sh 'echo $TESTVAR'
               // Initialize Terraform
