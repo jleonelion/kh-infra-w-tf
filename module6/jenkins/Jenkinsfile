@@ -9,7 +9,6 @@ pipeline {
             dir('module6/sample') {
               sh '''
                 set +x
-                echo hello $AWS_ACCESS_KEY_ID
                 terraform init
                 terraform plan
               '''
