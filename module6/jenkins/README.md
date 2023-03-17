@@ -44,18 +44,19 @@ terraform apply --auto-approve
 
 1. The Terraform project will produce an output called `jenkins_url`...open that URL in your browser.
 1. Paste the intial password you obtained in your SSH session
-1. Install Recommended Plugins
+1. Install Suggested plugins
 1. Create silly admin account (username: adminme; password: password; name: Admin Me; email: admin@me.com)
 1. Start Using Jenkins
 
 ## Add AWS Credentials to Jenkins
 
 1. Generate access key for Terraform account in AWS Console
-1. Create credentials in Jenkins called `jenkins-aws-secret-key-id` and `jenkins-aws-secret-access-key`
+1. Create username password credentials in Jenkins called `aws` (with the AWS secret)
 
 ## GitHub PAT
 
-[Create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that Jenkins will use when communciating with GitHub
+1. [Create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that is scoped to accessing this repo
+1. Create credentials in Jenkins called `github` (your GitHub username and PAT as password)
 
 ## Jenkins Job
 
