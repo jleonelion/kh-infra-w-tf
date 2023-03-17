@@ -22,7 +22,7 @@ ssh-keygen -t rsa -f ~/.ssh/jenkins_rsa
 cp ~/.ssh/jenkins_rsa.pub jenkins_rsa.pub
 ```
 
-## Provision Jenkins Project
+## Provision Jenkins Infra
 
 Provision the Jenkins Terraform project.  This assumes you have cached AWS credentials from prior activities.
 
@@ -47,6 +47,11 @@ terraform apply --auto-approve
 1. Install Recommended Plugins
 1. Create silly admin account (username: adminme; password: password; name: Admin Me; email: admin@me.com)
 1. Start Using Jenkins
+
+## Add AWS Credentials to Jenkins
+
+1. Generate access key for Terraform account in AWS Console
+1. Create credentials in Jenkins called `jenkins-aws-secret-key-id` and `jenkins-aws-secret-access-key`
 
 ## GitHub PAT
 
