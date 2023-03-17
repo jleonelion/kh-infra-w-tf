@@ -1,17 +1,20 @@
 pipeline {
 	agent any
+  environment {
+
+  }
 	stages {
     stage('Terraform Plan') {
       steps {
         script {
           withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'AWS_SECRET_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             dir('module6/sample') {
-              sh "echo hello ${AWS_SECRET_KEY_ID}"
+              sh "echo hello $AWS_SECRET_KEY_ID"
               // Initialize Terraform
-              sh 'terraform init'
+              sh "terraform init"
 
               // Run Terraform Plan
-              sh 'terraform plan'
+              sh "terraform plan"
             }
           }
         }
