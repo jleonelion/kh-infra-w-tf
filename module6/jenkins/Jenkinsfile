@@ -6,7 +6,7 @@ pipeline {
         script {
           withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'AWS_SECRET_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             dir('module6/sample') {
-              sh 'echo $TESTVAR'
+              sh "echo hello ${AWS_SECRET_KEY_ID}"
               // Initialize Terraform
               sh 'terraform init'
 
