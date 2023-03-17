@@ -5,11 +5,11 @@ pipeline {
     stage('Terraform Plan') {
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'AWS_SECRET_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+          withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             dir('module6/sample') {
               sh '''
                 set +x
-                echo hello $AWS_SECRET_KEY_ID
+                echo hello $AWS_ACCESS_KEY_ID
                 terraform init
                 terraform plan
               '''
