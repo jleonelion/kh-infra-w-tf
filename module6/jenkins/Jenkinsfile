@@ -1,14 +1,19 @@
 pipeline {
 	agent any
+
 	stages {
     stage('Terraform Plan') {
       steps {
         script {
-          // Initialize Terraform
-          sh 'terraform init'
-
-          // Run Terraform Plan
-          sh 'terraform plan'
+          withCredentials([usernamePassword(credentialsId: 'aws', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+            dir('module6/sample') {
+              sh '''
+                set +x
+                terraform init
+                terraform plan
+              '''
+            }
+          }
         }
       }
     }
