@@ -9,7 +9,6 @@ pipeline {
             dir('module6/sample') {
               sh '''
                 set +x
-                echo "hello change"
                 terraform init
                 terraform plan
               '''
