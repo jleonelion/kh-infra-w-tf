@@ -49,7 +49,7 @@ data "aws_ami" "ubuntu" {
 }
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair
 resource "aws_key_pair" "ssh_key" {
-  key_name   = "iaas-start"
+  key_name   = "jenkins"
   public_key = data.local_file.public_key.content
 }
 # https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file
